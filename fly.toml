@@ -9,15 +9,15 @@ primary_region = 'iad'
 [build]
 
 [http_service]
-  internal_port = 8080
+  internal_port = 20128  # <--- 8080 ကနေ Dockerfile ထဲက PORT အတိုင်း 20128 ကို ပြောင်းလိုက်ပါတယ်
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
+  grace_period = '30s'   # <--- App စတက်ချင်းမှာ timeout မဖြစ်အောင် ၃၀ စက္ကန့် အချိန်ပေးထားပါတယ်
 
 [[vm]]
-  memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 256
+  memory_mb = 256        # <--- Fly.io ရဲ့ Free tier အတိုင်း ပမာဏကို မှန်အောင် ထားပေးထားပါတယ်
